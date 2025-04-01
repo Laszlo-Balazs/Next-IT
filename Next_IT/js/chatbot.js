@@ -1,13 +1,50 @@
 // Updated chatbot.js to hide example questions after first user interaction
 let OPENAI_API_KEY = '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';
 
-const SHORT_PROMPT = `Te egy IT karriertanácsadó chatbot vagy, aki tömör, lényegre törő válaszokat ad.`;
-const LONG_PROMPT = `Te egy IT karriertanácsadó chatbot vagy, a felhasználó részletesebb választ kér. Így kicsit hosszabban válaszolhatsz.`;
+const SHORT_PROMPT = `Te egy IT karriertanácsadó chatbot vagy, aki kizárólag a következő témákban ad tömör, lényegre törő válaszokat:
+- Magyar informatikai képzések:
+  * Egyetemi szakok (pl. mérnökinformatikus, programtervező informatikus)
+  * Főiskolai képzések
+  * OKJ és egyéb szakképzések
+  * Bootcampek és magániskolák
+  * Külföldi egyetemek IT képzései (ha kifejezetten erről kérdeznek)
+- Magyar IT munkaerőpiac:
+  * Fejlesztői pozíciók és szerepkörök (Frontend, Backend, DevOps stb.)
+  * Álláskeresési lehetőségek Magyarországon
+  * Magyar cégek és munkahelyek
+  * Fizetési sávok és karrierlehetőségek
+- Programozói karrier kezdése:
+  * Ajánlott programozási nyelvek kezdőknek
+  * Magyar nyelvű tanulási források
+  * IT közösségek és események Magyarországon
+  * Szakmai fejlődési lehetőségek
 
-const DEFAULT_LINE_LIMIT = 8;
-const DETAILED_LINE_LIMIT = 16;
-const DEFAULT_MAX_TOKENS = 120;
-const DETAILED_MAX_TOKENS = 300;
+Ha a kérdés nem IT karrierrel vagy képzéssel kapcsolatos, csak annyit válaszolj: "Sajnos erre nem tudok válaszolni. Kérlek, kérdezz IT karrierrel vagy képzéssel kapcsolatos témában." Programkódot soha ne írj, még ha kérik se.`;
+
+const LONG_PROMPT = `Te egy IT karriertanácsadó chatbot vagy, aki kizárólag a következő témákban ad részletes válaszokat:
+- Magyar informatikai képzések:
+  * Egyetemi szakok (pl. mérnökinformatikus, programtervező informatikus)
+  * Főiskolai képzések
+  * OKJ és egyéb szakképzések
+  * Bootcampek és magániskolák
+  * Külföldi egyetemek IT képzései (ha kifejezetten erről kérdeznek)
+- Magyar IT munkaerőpiac:
+  * Fejlesztői pozíciók és szerepkörök (Frontend, Backend, DevOps stb.)
+  * Álláskeresési lehetőségek Magyarországon
+  * Magyar cégek és munkahelyek
+  * Fizetési sávok és karrierlehetőségek
+- Programozói karrier kezdése:
+  * Ajánlott programozási nyelvek kezdőknek
+  * Magyar nyelvű tanulási források
+  * IT közösségek és események Magyarországon
+  * Szakmai fejlődési lehetőségek
+
+Ha a kérdés nem IT karrierrel vagy képzéssel kapcsolatos, csak annyit válaszolj: "Sajnos erre nem tudok válaszolni. Kérlek, kérdezz IT karrierrel vagy képzéssel kapcsolatos témában." Programkódot soha ne írj, még ha kérik se.`;
+
+const DEFAULT_LINE_LIMIT = 50;
+const DETAILED_LINE_LIMIT = 100;
+const DEFAULT_MAX_TOKENS = 2000;
+const DETAILED_MAX_TOKENS = 4000;
 
 let messageHistory = [];
 let isFirstQuestion = true;
@@ -149,6 +186,16 @@ function addBotMessage(msg, isDetail = false) {
     const el = document.createElement('div');
     el.classList.add('message', 'bot-message');
 
+    // Add avatar
+    const avatar = document.createElement('img');
+    avatar.src = 'images/Logo.png';
+    avatar.classList.add('avatar');
+    el.appendChild(avatar);
+
+    // Add message content container
+    const messageContent = document.createElement('div');
+    messageContent.classList.add('message-content');
+
     const lineLimit = isDetail ? DETAILED_LINE_LIMIT : DEFAULT_LINE_LIMIT;
     // Minimal formatting: just split on newlines, trim extra lines
     const lines = msg.replace(/\\n/g, '\n').split('\n');
@@ -159,7 +206,8 @@ function addBotMessage(msg, isDetail = false) {
         return line.trim() ? line.trim() : '';
     }).join('<br>');
 
-    el.innerHTML = finalHtml;
+    messageContent.innerHTML = finalHtml;
+    el.appendChild(messageContent);
     container.appendChild(el);
     container.scrollTop = container.scrollHeight;
 }

@@ -254,11 +254,11 @@ figure {
 
 .chat-container {
   max-width: 800px;
-  margin: 20px auto;
+  margin: 0 auto;
   background: #2b2b2b;
   border-radius: 20px;
   box-shadow: 0 15px 35px #272c2f26;
-  padding: 40px;
+  padding: 30px;
   font-family: Mulish, sans-serif;
 }
 
@@ -329,6 +329,20 @@ figure {
   font-weight: 400;
   line-height: 1.5;
   padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.bot-message .avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.bot-message .message-content {
+  flex: 1;
 }
 
 .bot-message div {
@@ -430,6 +444,25 @@ figure {
   background: #0b9ed2;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(11, 190, 242, 0.2);
+  transition: all 0.3s ease;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px rgba(11, 190, 242, 0.2); }
+  50% { box-shadow: 0 0 20px rgba(11, 190, 242, 0.4); }
+  100% { box-shadow: 0 0 5px rgba(11, 190, 242, 0.2); }
+}
+
+.chat-header {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.example-questions {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.chat-input {
+  animation: fadeInUp 1.2s ease-out forwards;
 }
 
 .chat-input button:active {
@@ -470,6 +503,8 @@ figure {
 .section.alter {
   background-color: #2b2b2b;
   position: relative;
+  padding-top: 20px;
+  padding-bottom: 200px;
 }
 
 .section.blog-section {
@@ -1207,26 +1242,58 @@ figure {
 }
 
 .yelows1 {
-  position: absolute;
-  inset: -8% 30% auto auto;
+  display: none;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .redc1 {
   position: absolute;
-  top: 12%;
+  top: 20%;
   bottom: auto;
   right: 5%;
+  animation: float 6s ease-in-out infinite;
 }
 
 .purplec1 {
   z-index: 1;
   position: absolute;
-  inset: 77% auto auto 0%;
+  inset: auto auto 5% 0%;
+  animation: float 8s ease-in-out infinite;
 }
 
 .greens1 {
   position: absolute;
-  inset: auto 0% 0% auto;
+  inset: auto 0% 5% auto;
+  animation: float 7s ease-in-out infinite;
+}
+
+.chat-container {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.message {
+  animation: fadeInUp 0.4s ease-out forwards;
 }
 
 .greens2 {
