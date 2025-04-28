@@ -45,7 +45,7 @@ if(isset($_SESSION['user_id'])) {
           <a href="registration.php" class="reg-link">Regisztrálj!</a>
         </div>
         <div class="div-block-11">
-          <a href="index.html" class="reg-link">Vissza a kezdőlapra!</a>
+          <a href="index.php" class="reg-link">Vissza a kezdőlapra!</a>
         </div>
       </div>
       <div class="righ-div">
