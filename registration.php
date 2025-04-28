@@ -45,6 +45,9 @@ if(isset($_SESSION['user_id'])) {
           <div class="reg-txt">Van már fiókod? </div>
           <a href="login.php" class="login-link">Jelentkezz be!</a>
         </div>
+        <div class="div-block-11">
+          <a href="index.html" class="reg-link">Vissza a kezdőlapra!</a>
+        </div>
       </div>
       <div class="righ-div">
         <img src="images/logreg.png" loading="lazy" width="328" alt="" class="image-20">
