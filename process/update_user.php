@@ -3,7 +3,7 @@ require_once '../includes/admin_check.php';
 require_once '../includes/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['user_id']) || !isset($_POST['action'])) {
-    header('Location: /Next/admin.php');
+    header('Location: admin.php');
     exit();
 }
 
@@ -16,7 +16,7 @@ try {
         // Ne engedje a saját admin jogát elvenni
         if ($user_id == $_SESSION['user_id']) {
             $_SESSION['error'] = 'Nem veheted el a saját admin jogodat!';
-            header('Location: /Next/admin.php');
+            header('Location: admin.php');
             exit();
         }
 
@@ -33,7 +33,7 @@ try {
         // Ne engedje törölni saját magát
         if ($user_id == $_SESSION['user_id']) {
             $_SESSION['error'] = 'Nem törölheted a saját fiókodat!';
-            header('Location: /Next/admin.php');
+            header('Location: admin.php');
             exit();
         }
 
@@ -46,5 +46,5 @@ try {
     $_SESSION['error'] = 'Hiba történt a művelet során!';
 }
 
-header('Location: /Next/admin.php');
+header('Location: admin.php');
 exit();

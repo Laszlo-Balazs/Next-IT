@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once '../includes/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header("Location: /Next/login.php");
+    header("Location: login.php");
     exit();
 }
 
@@ -31,14 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                 error_log("Email: " . $_SESSION['email']);
                 error_log("Admin: " . $_SESSION['admin']);
                 
-                header("Location: /Next/index.php");
+                header("Location: index.php");
                 exit();
             }
         }
-        header("Location: /Next/login.php?error=1&attempted=1");
+        header("Location: login.php?error=1&attempted=1");
         exit();
     } catch(PDOException $e) {
-        header("Location: /Next/login.php");
+        header("Location: login.php");
         exit();
     }
 ?>

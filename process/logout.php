@@ -10,10 +10,10 @@ session_destroy();
 
 // Ha chat-bot oldalról jövünk vagy nincs referer, akkor a login oldalra
 if ($current_page == 'chat-bot.php' || empty($current_page)) {
-    header("Location: /Next/login.php");
+    header("Location: login.php");
 } else {
     // Egyébként maradunk az aktuális oldalon
-    header("Location: /Next/" . $current_page);
+    header("Location: " . $current_page);
 }
 exit();
 ?>

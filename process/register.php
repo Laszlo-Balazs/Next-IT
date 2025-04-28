@@ -15,11 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':password', $password);
         
         if($stmt->execute()) {
-            header("Location: /Next/login.php?success=1");
+            header("Location: login.php?success=1");
             exit();
         }
     } catch(PDOException $e) {
-        header("Location: /Next/registration.php?error=1");
+        header("Location: registration.php?error=1");
         exit();
     }
 }
