@@ -13,7 +13,7 @@ if ($current_page == 'chat-bot.php' || empty($current_page)) {
     header("Location: login.php");
 } else {
     // Egyébként maradunk az aktuális oldalon
-    header("Location: " . $current_page);
+    header("Location: ../" . $current_page);
 }
 exit();
 ?>

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
     } catch(PDOException $e) {
-        header("Location: registration.php?error=1");
+        header("Location: ../registration.php?error=1");
         exit();
     }
 }

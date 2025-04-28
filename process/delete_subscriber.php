@@ -3,7 +3,7 @@ require_once '../includes/admin_check.php';
 require_once '../includes/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['subscriber_id'])) {
-    header('Location: admin.php');
+    header('Location: ../admin.php');
     exit();
 }
 
@@ -19,5 +19,5 @@ try {
     $_SESSION['error'] = 'Hiba történt a törlés során!';
 }
 
-header('Location: admin.php');
+header('Location: ../admin.php');
 exit();

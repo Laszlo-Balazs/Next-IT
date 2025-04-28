@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                 error_log("Email: " . $_SESSION['email']);
                 error_log("Admin: " . $_SESSION['admin']);
                 
-                header("Location: index.php");
+                header("Location: ../index.php");
                 exit();
             }
         }
