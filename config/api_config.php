@@ -1,2 +1,2 @@
 <?php
-define('OPENAI_API_KEY', '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');
+define('OPENAI_API_KEY', 'YOUR API KEY');
