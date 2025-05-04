@@ -1,4 +1,48 @@
 # NextIT ChatBot Beállítási Útmutató
+# Hírlevél Rendszer Beállítása
+
+## Email Küldés Beállítása
+
+A hírlevél rendszer működéséhez az alábbi beállítások szükségesek a szerveren:
+
+1. Ellenőrizze, hogy a PHP `mail()` függvény engedélyezve van-e:
+   - Nyissa meg a php.ini fájlt
+   - Keresse meg a `[mail function]` szekciót
+   - Ellenőrizze/állítsa be az alábbi értékeket:
+     ```ini
+     SMTP = localhost
+     smtp_port = 25
+     sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
+     ```
+
+2. Sendmail Beállítása:
+   - Nyissa meg a `C:\xampp\sendmail\sendmail.ini` fájlt
+   - Módosítsa az alábbi beállításokat:
+     ```ini
+     smtp_server=smtp.gmail.com
+     smtp_port=587
+     smtp_ssl=tls
+     auth_username=az_on_email@gmail.com
+     auth_password=az_on_jelszo
+     force_sender=noreply@nextit.hu
+     ```
+
+3. Email Beállítások Tesztelése:
+   - Próbáljon ki egy feliratkozást
+   - Ellenőrizze a PHP error log fájlt hibák esetén
+   - A sikeres email küldést a feliratkozó email címén ellenőrizheti
+
+Megjegyzés: Gmail használata esetén:
+- Engedélyezze a "Kevésbé biztonságos alkalmazások használatát" a Google Fiókban, vagy
+- Használjon App-specifikus jelszót (ajánlott)
+
+## Hibaelhárítás
+
+Ha nem érkeznek meg az emailek:
+1. Ellenőrizze a PHP hibanapló fájlt
+2. Győződjön meg róla, hogy a sendmail szolgáltatás fut
+3. Tesztelje az SMTP kapcsolatot: `telnet smtp.gmail.com 587`
+4. Ellenőrizze a tűzfal beállításokat (25-ös és 587-es port)
 
 ## API Kulcs Beállítása
 
@@ -38,4 +82,3 @@ Ha a chatbot nem működik megfelelően:
 
 - A chat_proxy.php automatikusan betölti az API kulcsot az api_config.php fájlból
 - A JavaScript kód már úgy van beállítva, hogy a proxy-n keresztül kommunikáljon
-- Nincs szükség további módosításokra a frontend oldalon
