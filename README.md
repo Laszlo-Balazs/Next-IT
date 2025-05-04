@@ -12,19 +12,19 @@ A hírlevél rendszer működéséhez az alábbi beállítások szükségesek a 
      ```ini
      SMTP = localhost
      smtp_port = 25
-     sendmail_path = "C:\xampp\sendmail\sendmail.exe -t"
+     sendmail_path = "/path/to/sendmail/sendmail.exe -t"
      ```
 
 2. Sendmail Beállítása:
-   - Nyissa meg a `C:\xampp\sendmail\sendmail.ini` fájlt
+   - Nyissa meg a sendmail konfigurációs fájlt
    - Módosítsa az alábbi beállításokat:
      ```ini
-     smtp_server=smtp.gmail.com
+     smtp_server=your_smtp_server.com
      smtp_port=587
      smtp_ssl=tls
-     auth_username=az_on_email@gmail.com
-     auth_password=az_on_jelszo
-     force_sender=noreply@nextit.hu
+     auth_username=your_username@example.com
+     auth_password=your_password_here
+     force_sender=noreply@your_domain.com
      ```
 
 3. Email Beállítások Tesztelése:
@@ -41,7 +41,7 @@ Megjegyzés: Gmail használata esetén:
 Ha nem érkeznek meg az emailek:
 1. Ellenőrizze a PHP hibanapló fájlt
 2. Győződjön meg róla, hogy a sendmail szolgáltatás fut
-3. Tesztelje az SMTP kapcsolatot: `telnet smtp.gmail.com 587`
+3. Tesztelje az SMTP kapcsolatot: `telnet your_smtp_server.com 587`
 4. Ellenőrizze a tűzfal beállításokat (25-ös és 587-es port)
 
 ## API Kulcs Beállítása
@@ -54,9 +54,9 @@ A chatbot működéséhez szükséges az OpenAI API kulcs beállítása. A kulcs
 2. Nyisd meg az `api_config.php` fájlt
 3. Keresd meg ezt a sort:
 ```php
-define('OPENAI_API_KEY', 'ide-írd-be-az-api-kulcsot');
+define('OPENAI_API_KEY', 'your_api_key_here');
 ```
-4. Cseréld ki az 'ide-írd-be-az-api-kulcsot' részt a saját OpenAI API kulcsoddal
+4. Cseréld ki a 'your_api_key_here' részt a saját OpenAI API kulcsoddal
 
 ### Fontos Tudnivalók:
 
