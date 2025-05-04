@@ -5,7 +5,7 @@ if (session_status() === PHP_SESSION_NONE) {
 require_once '../includes/db_connect.php';
 
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
-    header("Location: login.php");
+    header("Location: ../login.php");
     exit();
 }
 
@@ -35,10 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] != "POST") {
                 exit();
             }
         }
-        header("Location: login.php?error=1&attempted=1");
+        header("Location: ../login.php?error=1&attempted=1");
         exit();
     } catch(PDOException $e) {
-        header("Location: login.php");
+        header("Location: ../login.php");
         exit();
     }
 ?>
